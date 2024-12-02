@@ -88,8 +88,8 @@ vector<int> decodeHamming(vector<int>& encoded) {
 int main() {
     SetConsoleOutputCP(65001);
 
-    //vector<int> data = {1, 1, 1, 1, 0, 0, 0, 0};
-    vector<int> data = {1, 1, 1, 1};
+    vector<int> data = {1, 1, 1, 1, 0, 0, 0, 0};
+    //vector<int> data = {1, 1, 1, 1};
 
     cout << "Исходные данные: ";
     for (int bit : data) {
