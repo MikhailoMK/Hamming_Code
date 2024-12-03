@@ -15,15 +15,15 @@
 ---
 # Описание программы:
 
-1. После запуска программа принимает целое число N в диапазоне от 1 до 2^64^ − 1.
+1. После запуска программа принимает целое число N в диапазоне от 1 до 2^64 − 1.
 
 2. Затем отображается список доступных операций:
-   - 1. Make a vector;
-   - 2. Encoding;
-   - 3. Decoding;
-   - 4. Invert a bit in an encoded vector;
-   - 5. Enter a new value;
-   - 6. Exit.
+   -1. Make a vector;
+   -2. Encoding;
+   -3. Decoding;
+   -4. Invert a bit in an encoded vector;
+   -5. Enter a new value;
+   -6. Exit.
 
 3. Описание операций:
 
