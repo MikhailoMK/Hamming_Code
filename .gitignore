@@ -1,2 +1,7 @@
+./build
+/build/
+./.vscode
+/.vscode/
 *.exe
 *.o
+*.json
