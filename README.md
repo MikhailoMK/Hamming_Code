@@ -18,14 +18,14 @@
 1. После запуска программа принимает целое число N в диапазоне от 1 до 2<sup>64</sup> − 1.
 
 2. Затем отображается список доступных операций:
-<ol>
-  <li>Make a vector</li>
-  <li>Encoding</li>
-  <li>Decoding</li>
-  <li>Invert a bit in an encoded vector</li>
-  <li>Enter a new value</li>
-  <li>Exit</li>
-</ol>
+    <ol>
+      <li>Make a vector</li>
+      <li>Encoding</li>
+      <li>Decoding</li>
+      <li>Invert a bit in an encoded vector</li>
+      <li>Enter a new value</li>
+      <li>Exit</li>
+    </ol>
 
 3. Описание операций:
 
