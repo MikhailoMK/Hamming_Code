@@ -1,8 +1,4 @@
-#include <iostream>
-#include <bitset>
-#include <cstdint>
-#include <vector>
-#include "src/hamming.h"
+#include "header/hamming.h"
 
 using namespace std;
 
@@ -31,15 +27,13 @@ vector<uint8_t> MakeVector(unsigned long long number) {
     return bytes;
 }
 
-void ShowCommands()
-{
+void ShowCommands() {
     cout << "Command list" << endl;
-    cout << " 1. Make a vector;" << endl;
-    cout << " 2. Encoding;" << endl;
-    cout << " 3. Decoding;" << endl;
-    cout << " 4. Invert a bit in an encoded vector;" << endl;
-    cout << " 5. Enter a new value;" << endl;
-    cout << " 6. Exit." << endl;
+    cout << " 1. Encoding;" << endl;
+    cout << " 2. Decoding;" << endl;
+    cout << " 3. Invert a bit in an encoded vector;" << endl;
+    cout << " 4. Enter a new value;" << endl;
+    cout << " 5. Exit." << endl;
 }
 
 int main() {
@@ -48,24 +42,22 @@ int main() {
     unsigned long long number;
     cout << "Enter a positive integer N: ";
     cin >> number;
+
     vector<uint8_t> bytes, encodedBytes, decodedBytes;
     bool vectorMaked = false, encoded = false;
+    bytes = MakeVector(number);
+    vectorMaked = true;
+
     cout << endl;
     ShowCommands();
 
-    while(true) {
+    while (true) {
         int command, index = 0;
         cout << "Select command: ";
         cin >> command;
         cout << endl;
 
         if (command == 1) {
-            bytes = MakeVector(number);
-            vectorMaked = true;
-            cout << endl;
-            ShowCommands();
-        }
-        else if (command == 2) {
             if (vectorMaked) {
                 encodedBytes = Hamming::Encode(bytes);
                 cout << "N " << number << " after encoding: " << endl;
@@ -74,14 +66,13 @@ int main() {
                 }
                 encoded = true;
                 index = 0;
-            }
-            else {
+            } else {
                 cout << "The vector of 4 bit values has not been compiled. Please compose the vector first.";
             }
             cout << endl;
             ShowCommands();
         }
-        else if (command == 3) {
+        else if (command == 2) {
             if (encoded) {
                 decodedBytes = Hamming::Decode(encodedBytes);
                 if (decodedBytes.size() > 0) {
@@ -100,15 +91,15 @@ int main() {
             cout << endl;
             ShowCommands();
         }
-        else if (command == 4) {
+        else if (command == 3) {
             if (encoded) {
                 int itemNumber, byteNumber;
                 if (encodedBytes.size() > 1){
                     cout << "Enter in which element of the vector you want to invert the bit (integer N from 1 to " << encodedBytes.size() << "): ";
                     cin >> itemNumber;
                 }
-				else
-					itemNumber = 1;
+                else
+                    itemNumber = 1;
                 cout << "Enter in which bit of the element you want to invert the bit (integer N from 1 to 8): ";
                 cin >> byteNumber;
 
@@ -135,14 +126,16 @@ int main() {
             cout << endl;
             ShowCommands();
         }
-        else if (command == 5) {
-            cout << "Enter an integer N that does not exceed 2^64-1: ";
+        else if (command == 4) {
+            cout << "Enter a positive integer N: ";
             cin >> number;
             vectorMaked = encoded = false;
+            bytes = MakeVector(number);
+            vectorMaked = true;
             cout << endl;
             ShowCommands();
         }
-        else if (command == 6) {
+        else if (command == 5) {
             cout << "End of program..." << endl;
             return 0;
         }

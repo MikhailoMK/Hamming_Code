@@ -1,8 +1,4 @@
-#include "hamming.h"
-#include <iostream>
-#include <cstdint>
-#include <bitset>
-#include <vector>
+#include "../header/hamming.h"
 
 using namespace std;
 
