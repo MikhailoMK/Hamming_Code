@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <bitset>
 #include <vector>
-#include "hamming.h"
+#include "src/hamming.h"
 
 using namespace std;
 
