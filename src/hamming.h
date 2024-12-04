@@ -1,8 +1,8 @@
-#ifndef HAMMING_H_INCLUDED
-#define HAMMING_H_INCLUDED
+#ifndef HAMMING_INCLUDED
+#define HAMMING_INCLUDED
 #include <iostream>
-#include <cstdint>
 #include <bitset>
+#include <cstdint>
 #include <vector>
 
 using namespace std;

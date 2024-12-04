@@ -10,7 +10,7 @@
     cd build
     cmake .. -G "MinGW Makefiles"
     cmake --build .
-    ./hamming
+    ./hamming_code.exe
 
 ---
 # **Описание программы:**

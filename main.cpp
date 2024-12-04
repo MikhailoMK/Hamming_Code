@@ -1,6 +1,6 @@
 #include <iostream>
-#include <cstdint>
 #include <bitset>
+#include <cstdint>
 #include <vector>
 #include "src/hamming.h"
 
@@ -46,17 +46,18 @@ int main() {
     setlocale(LC_ALL, "");
 
     unsigned long long number;
-    cout << "Enter an integer N that does not exceed 2^64-1: ";
+    cout << "Enter a positive integer N: ";
     cin >> number;
     vector<uint8_t> bytes, encodedBytes, decodedBytes;
     bool vectorMaked = false, encoded = false;
-
+    cout << endl;
     ShowCommands();
 
     while(true) {
         int command, index = 0;
         cout << "Select command: ";
         cin >> command;
+        cout << endl;
 
         if (command == 1) {
             bytes = MakeVector(number);
@@ -117,9 +118,9 @@ int main() {
 
                     cout << "Bit successfully inverted:" << endl;
 
+                    encodedBytes[itemIndex] ^= (1 << bitPosition);
+
                     for (uint8_t byte: encodedBytes) {
-                        if (index + 1 == itemIndex)
-                            byte ^= (1 << bitPosition);
                         cout << ++index << ". " << bitset<8>(byte) << endl;
                     }
                     index = 0;

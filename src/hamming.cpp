@@ -6,7 +6,7 @@
 
 using namespace std;
 
-namespace hamming
+namespace Hamming
 {
     uint8_t EncodeHelper(uint8_t byte) {
         bool d1, d2, d3, d4, p1, p2, p3, p4;
@@ -36,7 +36,7 @@ namespace hamming
 
     vector<uint8_t> Encode(const vector<uint8_t> bytes) {
         vector<uint8_t> resBytes;
-        cout << "Encoding..." << endl;
+        cout << "Encoded bytes:" << endl;
         for (uint8_t byte : bytes) {
             uint8_t resByte = EncodeHelper(byte);
             cout << bitset<4>(byte) << " -> " << bitset<8>(resByte) << endl;
@@ -70,7 +70,7 @@ namespace hamming
         temp = !A + !B * 2 + !C * 4 + !D * 8;
 
         if (temp > 0)
-            cout << "In the " << byteNum << " -th byte, an error was corrected in the  ";
+            cout << "In the " << byteNum << "-th byte, an error was corrected in the ";
 
         switch (temp) {
         case 15:
@@ -97,7 +97,7 @@ namespace hamming
     vector<uint8_t> Decode(const vector<uint8_t> bytes) {
         int index = 1;
         vector<uint8_t> resBytes;
-        cout << "Decoding..." << endl;
+        cout << "Decoded bytes:" << endl;
         for (uint8_t byte : bytes) {
             uint8_t res = DecodeHelper(byte, index);
             if (res == 0b10000000) {
