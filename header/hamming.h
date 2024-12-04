@@ -1,3 +1,5 @@
+#ifndef HAMMING_INCLUDED
+#define HAMMING_INCLUDED
 #include <iostream>
 #include <bitset>
 #include <cstdint>
@@ -12,3 +14,5 @@ namespace Hamming
     uint8_t DecodeHelper(uint8_t x);
     vector<uint8_t> Decode(const vector<uint8_t> bytes);
 }
+
+#endif //HAMMING_INCLUDED
