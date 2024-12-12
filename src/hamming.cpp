@@ -2,9 +2,9 @@
 
 using namespace std;
 
-namespace Hamming
+namespace ParityCorrection
 {
-    uint8_t EncodeHelper(uint8_t byte) {
+    uint8_t CorrectByte(uint8_t byte) {
         bool d1, d2, d3, d4, p1, p2, p3, p4;
         uint8_t result_byte = 0;
 
@@ -30,11 +30,11 @@ namespace Hamming
         return result_byte;
     }
 
-    vector<uint8_t> Encode(const vector<uint8_t> bytes) {
+    vector<uint8_t> GenerateParityCode(const vector<uint8_t>& inputBytes) {
         vector<uint8_t> resBytes;
         cout << "Encoded bytes:" << endl;
-        for (uint8_t byte : bytes) {
-            uint8_t resByte = EncodeHelper(byte);
+        for (uint8_t byte : inputBytes) {
+            uint8_t resByte = CorrectByte(byte);
             cout << bitset<4>(byte) << " -> " << bitset<8>(resByte) << endl;
             resBytes.push_back(resByte);
         }
@@ -42,7 +42,7 @@ namespace Hamming
         return resBytes;
     }
 
-    uint8_t DecodeHelper(uint8_t x, int byteNum) {
+    uint8_t RepairByte(uint8_t x, int byteNum) {
         bool p1, p2, p3, p4, d1, d2, d3, d4, A, B, C, D;
         int temp;
 
@@ -90,12 +90,12 @@ namespace Hamming
         return (d1 << 3) | (d2 << 2) | (d3 << 1) | d4;
     }
 
-    vector<uint8_t> Decode(const vector<uint8_t> bytes) {
+    vector<uint8_t> RecoverData(const vector<uint8_t>& encodedBytes) {
         int index = 1;
         vector<uint8_t> resBytes;
         cout << "Decoded bytes:" << endl;
-        for (uint8_t byte : bytes) {
-            uint8_t res = DecodeHelper(byte, index);
+        for (uint8_t byte : encodedBytes) {
+            uint8_t res = RepairByte(byte, index);
             if (res == 0b10000000) {
                 cout << index << ". " << bitset<8>(byte) << " -> Double error." << endl;
                 return vector<uint8_t>();

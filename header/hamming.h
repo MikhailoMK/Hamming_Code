@@ -1,5 +1,5 @@
-#ifndef HAMMING_INCLUDED
-#define HAMMING_INCLUDED
+#ifndef PARITY_CHECK_INCLUDED
+#define PARITY_CHECK_INCLUDED
 #include <iostream>
 #include <bitset>
 #include <cstdint>
@@ -7,12 +7,15 @@
 
 using namespace std;
 
-namespace Hamming
+namespace ParityCorrection
 {
-    uint8_t EncodeHelper(uint8_t byte);
-    vector<uint8_t> Encode(const vector<uint8_t> bytes);
-    uint8_t DecodeHelper(uint8_t x);
-    vector<uint8_t> Decode(const vector<uint8_t> bytes);
+    uint8_t CorrectByte(uint8_t byte);
+
+    vector<uint8_t> GenerateParityCode(const vector<uint8_t>& inputBytes);
+
+    uint8_t RepairByte(uint8_t x);
+
+    vector<uint8_t> RecoverData(const vector<uint8_t>& encodedBytes);
 }
 
-#endif //HAMMING_INCLUDED
+#endif // PARITY_CHECK_INCLUDED
